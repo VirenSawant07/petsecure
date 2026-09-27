@@ -1,0 +1,7 @@
+# Development: tests, linting, security audit, and the training / research scripts
+-r requirements.txt
+pytest==8.*
+ruff==0.*
+pip-audit==2.*
+scikit-learn==1.9.1
+opencv-python-headless==5.0.0.93

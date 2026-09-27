@@ -1,0 +1,7 @@
+# Runtime: what the web app needs (pinned to the versions the project was built and tested with)
+tensorflow==2.21.0
+streamlit==1.64.0
+librosa==1.0.0
+numpy==2.5.3
+pillow==12.3.0
+matplotlib==3.11.2

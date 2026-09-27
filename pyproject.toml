@@ -1,0 +1,17 @@
+[project]
+name = "petsecure"
+version = "1.0.0"
+description = "Dog emotion recognition (angry / happy / sad) from a photo or a bark, with honest confidence levels."
+requires-python = ">=3.12"
+
+[tool.ruff]
+line-length = 140
+extend-exclude = ["notebooks", "research"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B"]
+ignore = ["E501", "E702", "E731"]   # long HTML strings in ui.py; short one-line statements in plotting code
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
