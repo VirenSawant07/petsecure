@@ -1,0 +1,10 @@
+{
+ "model": "models/crnn_corrected_emotion.keras",
+ "classes": [
+  "angry",
+  "happy",
+  "sad"
+ ],
+ "holdout_correct": 17,
+ "holdout_total": 23
+}

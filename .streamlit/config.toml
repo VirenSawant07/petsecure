@@ -1,0 +1,22 @@
+[server]
+enableStaticServing = true
+
+[theme]
+base = "light"
+primaryColor = "#1f4d3a"
+backgroundColor = "#fbf7f0"
+secondaryBackgroundColor = "#f5eee3"
+textColor = "#1f2a24"
+font = "Inter"
+headingFont = "Fraunces"
+baseRadius = "0.8rem"
+
+[[theme.fontFaces]]
+family = "Inter"
+url = "app/static/fonts/Inter.woff2"
+weight = "400 700"
+
+[[theme.fontFaces]]
+family = "Fraunces"
+url = "app/static/fonts/Fraunces.woff2"
+weight = "600 700"
