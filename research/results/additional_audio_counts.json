@@ -1,0 +1,35 @@
+{
+ "dog_audioset": {
+  "clips": 580,
+  "format": "flac",
+  "split": {
+   "bal_train": 315,
+   "eval": 265
+  },
+  "tags": {
+   "Dog": 445,
+   "Bow-wow": 117,
+   "Growling": 107,
+   "Howl": 107,
+   "Yip": 106,
+   "Bark": 103,
+   "Whimper (dog)": 98
+  }
+ },
+ "dog_emotion": {
+  "train": {
+   "husky": 500,
+   "shiba": 500
+  },
+  "validation": {
+   "husky": 100,
+   "shiba": 100
+  },
+  "test": {
+   "husky": 100,
+   "shiba": 100
+  },
+  "total": 1400
+ },
+ "total_clips": 1980
+}

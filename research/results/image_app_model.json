@@ -1,0 +1,1 @@
+{"model": "models/efficientnet_frozen_emotion.keras", "trained_by": "train_image_model.py", "holdout_correct": 633, "holdout_total": 750}
