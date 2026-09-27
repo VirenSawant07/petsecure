@@ -1,0 +1,70 @@
+# Runs on every push to main and on every pull request.
+# lint -> test -> docker (build the image and check the app answers its health check); security runs in parallel.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint (ruff)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "ruff==0.*"
+      - run: ruff check .
+
+  test:
+    name: Tests (pytest)
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements*.txt
+      - run: pip install -r requirements-dev.txt
+      - run: pytest -q
+
+  security:
+    name: Dependency audit (pip-audit)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "pip-audit==2.*"
+      - run: pip-audit -r requirements.txt
+
+  docker:
+    name: Docker build + health check
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t petsecure:ci .
+      - name: Start container and wait for the health endpoint
+        run: |
+          docker run -d --name petsecure -p 8501:8501 petsecure:ci
+          for i in $(seq 1 30); do
+            if curl -fs http://localhost:8501/_stcore/health | grep -q ok; then echo "healthy after ${i} tries"; exit 0; fi
+            sleep 2
+          done
+          docker logs petsecure
+          exit 1
