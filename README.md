@@ -6,6 +6,9 @@
 
 Deep-learning web app that recognises whether a dog is **angry, happy or sad** from a photograph *or* a vocalization, and tells you **how sure it is**.
 
+**▶ Try it live: [petsecure.streamlit.app](https://petsecure.streamlit.app)** (free server, so it may take a minute to wake up)
+
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://petsecure.streamlit.app)
 [![CI](https://github.com/VirenSawant07/petsecure/actions/workflows/ci.yml/badge.svg)](https://github.com/VirenSawant07/petsecure/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.21-orange)
@@ -89,6 +92,8 @@ flowchart LR
 ```
 
 ## Quick start
+
+**Use it online:** open [petsecure.streamlit.app](https://petsecure.streamlit.app). Nothing to install.
 
 **Run locally** (Python 3.12):
 ```bash
